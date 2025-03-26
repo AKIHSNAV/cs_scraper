@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Web Scraper</h1>
+        <div class="scraper-form">
+            <p class="instruction-text">Enter any website URL to scrape its content. The request will be processed as JSON.</p>
+            <div class="input-group">
+                <input type="url" id="url-input" placeholder="Enter website URL to scrape (e.g., https://example.com)" required>
+                <button id="scrape-button">Scrape</button>
+            </div>
+            <div class="status-message" id="status-message"></div>
+            <div class="json-preview-container">
+                <div class="json-preview-toggle">
+                    <button id="toggle-json">Show JSON Payload</button>
+                </div>
+                <pre id="json-preview" class="json-preview"></pre>
+            </div>
+        </div>
+        <div class="result-container" id="result-container">
+            <div class="loading-spinner" id="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+            <div class="download-section" id="download-section">
+                <h2>Scraping Complete!</h2>
+                <p>Your data is ready to download.</p>
+                <button id="download-button">Download Text File</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
