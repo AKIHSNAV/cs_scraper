@@ -3,36 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Scraper</title>
+    <title>Web Scraper with LLM Extraction</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Web Scraper</h1>
-        <div class="scraper-form">
-            <p class="instruction-text">Enter any website URL to scrape its content. The request will be processed as JSON.</p>
+        
+        <!-- URL Input Section -->
+        <section class="section url-section">
+            <h2>Step 1: Enter URL to Scrape</h2>
+            <p class="instruction-text">Enter any website URL to scrape its content using our Selenium-powered scraper.</p>
             <div class="input-group">
                 <input type="url" id="url-input" placeholder="Enter website URL to scrape (e.g., https://example.com)" required>
                 <button id="scrape-button">Scrape</button>
             </div>
             <div class="status-message" id="status-message"></div>
-            <div class="json-preview-container">
-                <div class="json-preview-toggle">
-                    <button id="toggle-json">Show JSON Payload</button>
+        </section>
+        
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loading-spinner">
+            <div class="spinner"></div>
+        </div>
+        
+        <!-- JSON Result Section -->
+        <section class="section json-section" id="json-section">
+            <h2>Step 2: Raw Data (JSON)</h2>
+            <div class="json-result-section" id="json-result-section">
+                <div class="result-message">
+                    <span class="success-icon">✓</span>
+                    <p>Scraping complete! Your raw JSON data is ready to download.</p>
                 </div>
-                <pre id="json-preview" class="json-preview"></pre>
+                <button id="download-json-button">Download JSON</button>
+                <div class="json-preview-container">
+                    <div class="json-preview-toggle">
+                        <button id="toggle-json">Preview JSON Data</button>
+                    </div>
+                    <pre id="json-preview" class="json-preview"></pre>
+                </div>
             </div>
-        </div>
-        <div class="result-container" id="result-container">
-            <div class="loading-spinner" id="loading-spinner">
-                <div class="spinner"></div>
+        </section>
+        
+        <!-- Extraction Query Section -->
+        <section class="section extraction-section" id="extraction-section">
+            <h2>Step 3: Specify Information to Extract</h2>
+            <div class="extraction-prompt">
+                <p>What specific information do you want to extract from this website?</p>
+                <textarea id="extraction-query" placeholder="E.g., 'Extract all product prices', 'Get contact information', 'Find all image URLs', 'Summary of main content'"></textarea>
+                <button id="extract-button">Extract Information</button>
             </div>
-            <div class="download-section" id="download-section">
-                <h2>Scraping Complete!</h2>
-                <p>Your data is ready to download.</p>
-                <button id="download-button">Download Text File</button>
+        </section>
+        
+        <!-- LLM Processed Data Section -->
+        <section class="section result-section" id="result-section">
+            <h2>Step 4: Extracted Information</h2>
+            <div class="llm-result-section" id="llm-result-section">
+                <div class="result-message">
+                    <span class="success-icon">✓</span>
+                    <p>Information extracted successfully using AI processing!</p>
+                </div>
+                <div class="extraction-preview" id="extraction-preview">
+                    <pre id="extraction-content"></pre>
+                </div>
+                <button id="download-text-button">Download Text File</button>
             </div>
-        </div>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>
